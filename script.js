@@ -42,10 +42,11 @@ class PlayerCharacter {
     }
 
     buildStats(hp, def, atk, dmg) {
-        this.stats.hp  = hp;
-        this.stats.def = def;
-        this.stats.atk = atk;
-        this.stats.dmg = dmg;
+        this.stats.hp     = hp;
+        this.stats.hpMax  = hp;
+        this.stats.def    = def;
+        this.stats.atk    = atk;
+        this.stats.dmg    = dmg;
     }
     buildTraits(str, dex, con, int, wis, cha) {
         this.traits.strength     = str;
@@ -71,8 +72,9 @@ class PlayerCharacter {
     combatCheck(ac, hp, atk, dmgHigh, dmgLow = 0) {
         const [x, d] = this.stats.dmg.split("d");
         // const playerAtkRoll = diceRoll();
-        const playerAtkRoll = 10;
-        let playerAtk = playerAtkRoll + this.stats.atk + ((this.atkBonus && this.atkBonus != 0) ? this.atkBonus : 0);
+        const playerAtkRoll = 7;
+        let playerAtk = playerAtkRoll + this.stats.atk + ((this.atkBonus) ? this.atkBonus : 0);
+        let playerDmg = 0;
         console.log(playerAtk)
         let isSuccess = true;
         // let isAttacked = false;
@@ -90,9 +92,32 @@ class PlayerCharacter {
         }
         // Calculate Damage Roll
         if(isSuccess) {
-            // If the attack is successful: roll player damage, compare player damage to monster hp
+            function dmgCalc() {
+                let dmgSum = 0;
+                for (let i = 0; i < x; i++) {
+                    dmgSum += diceRoll(d);
+                }
+                return dmgSum;
+            }
+            const playerDmgRoll = dmgCalc();
+            // playerDmg = playerDmgRoll + ((this.dmgBonus) ? this.dmgBonus : 0);
+            playerDmg = 2;
+            console.log(playerDmgRoll);
+
+            if (playerDmg >= hp && isSuccess) {
+                console.log("The creature is dead.")
+            } else {
+                console.log("The creature is still up, and attacks.");
+                if (atk >= this.stats.def) {
+                    this.stats.hp -= dmgHigh;
+                    console.log(`The creature strikes, dealing ${dmgHigh} damage.`);
+                } else {
+                    this.stats.hp -= dmgLow;
+                    console.log(`The creature hits you, dealing ${dmgLow} damage.`)
+                }
+            }
         }
-        console.log(playerAtk)
+            // Need to change code to roll damage on low player damage OR on missed attack
     }
 }
 
@@ -116,3 +141,5 @@ syntax.abilities.tinkerer = function() {
 // syntax.combatCheck(10,3,12,2,1);
 
 syntax.combatCheck(10, 3, 12, 2, 1);
+
+console.log(syntax);

@@ -3,6 +3,12 @@
 const diceRoll = (n = 20) => Math.floor(Math.random() * n + 1);
 
 // DOM SHORTCUTS
+const updateHP  = document.querySelector("#updateHP");
+const updateHPm = document.querySelector("#updateHPm");
+const updateDef = document.querySelector("#updateDef");
+const updateAtk = document.querySelector("#updateAtk");
+const updateDmg = document.querySelector("#updateDmg");
+
 const updateStr = document.querySelector("#updateStr");
 const updateDex = document.querySelector("#updateDex");
 const updateCon = document.querySelector("#updateCon");
@@ -24,6 +30,7 @@ class PlayerCharacter {
 
         this.stats = {
             hp:  0,
+            hpm: 0,
             def: 0,
             atk: 0,
             dmg: 0,
@@ -57,6 +64,14 @@ class PlayerCharacter {
         this.stats.dmg    = dmg;
     }
 
+    updateStats() {
+        updateHP.innerHTML  = this.stats.hp;
+        updateHPm.innerHTML = `HP Max: ${this.stats.hpm}`;
+        updateDef.innerHTML = this.stats.def;
+        updateAtk.innerHTML = this.stats.atk;
+        updateDmg.innerHTML = this.stats.dmg;
+    }
+
     buildTraits(str, dex, con, int, wis, cha) {
         this.traits.strength     = str;
         this.traits.dexterity    = dex;
@@ -87,6 +102,8 @@ class PlayerCharacter {
         document.querySelector("#characterImg").setAttribute("src", "/img/syntax.jpg"); 
         this.updateTraits();
         this.updateVirtue();
+        this.stats.hpm = this.stats.hp;
+        this.updateStats();
     }
 
     skillCheck(trait, skill, dn = 20) {

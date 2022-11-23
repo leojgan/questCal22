@@ -1,0 +1,55 @@
+/*
+COLOR PALETTE (Dark to Light)
+Rich Black    - #0D1821
+Indigo Dye    - #344966
+Select Yellow - #FFBA08
+Silver Pink   - #C1A89A
+Cultured      - #F2F6F8
+*/
+
+body {
+    min-height: 100vh;
+    background-image: linear-gradient(#344966, #0D1821);
+}
+
+#characterImg {
+    max-height: 385px;
+    border-radius: 10px;
+}
+
+.header {
+    text-align: center;
+    font-family: "IM Fell English SC", Georgia, 'Times New Roman', Times, serif;
+    color: #f2f6f8;
+}
+
+.subheader {
+    text-align: center;
+    font-family: "Marhey", Georgia, 'Times New Roman', Times, serif;
+    color: #f2f6f8;
+    letter-spacing: 3px;
+}
+
+.trait-number, .card-text {
+    text-align: center;
+    font-family: "Marhey", Georgia, 'Times New Roman', Times, serif;
+    color: #0D1821;
+}
+
+.card {
+    align-items: center;
+}
+
+#virtueBar {
+    margin: auto;
+    width: 25%;
+    height: 30px;
+    background-color: green;
+}
+
+#virtueStatus {
+    width:100%;
+    background-color: #f2f6f8;
+    border: 3px solid #c1a89a;
+    border-radius: 5px;
+}

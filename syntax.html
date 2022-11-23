@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC|Marhey">
+
+    <title>Syntax Character Sheet</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">QC 2022</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarContent" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="syntax.html">Syntax</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Azmyra</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Mori'an</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Trynnicus</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Tsavani</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Gareth</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col mt-5">
+                <h1 id="characterName" class="header">character name</h1>
+                <h3 id="characterInfo" class="subheader"></h3>
+            </div>
+        </div>
+        <!-- SECTION 1 -->
+        <div class="row justify-content-center">
+            <div class="col-auto align-self-center">
+                <!-- CHARACTER IMAGE -->
+                <img id="characterImg" src="#" alt="syntax character image">
+            </div>
+            <div class="col-auto">
+                <!-- TRAITS Top Row -->
+                <div class="row">
+                    <div class="col card m-2 py-2">
+                        <div class="card-body">
+                            <h1 id="updateStr" class="card-header trait-number">X</h1>
+                            <h6 class="card-text pt-2">Strength</h6>
+                        </div>
+                    </div>
+                    <div class="col card m-2 py-2">
+                        <div class="card-body">
+                            <h1 id="updateDex" class="card-header trait-number">X</h1>
+                            <h6 class="card-text pt-2">Dexterity</h6>
+                        </div>
+                    </div>
+                    <div class="col card m-2 py-2">
+                        <div class="card-body">
+                            <h1 id="updateCon" class="card-header trait-number">X</h1>
+                            <h6 class="card-text pt-2">Constitution</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- TRAITS Bottom Row -->
+                <div class="row">
+                    <div class="col card m-2 py-2">
+                        <div class="card-body">
+                            <h1 id="updateInt" class="card-header trait-number">X</h1>
+                            <h6 class="card-text pt-2">Intellect</h6>
+                        </div>
+                    </div>
+                    <div class="col card m-2 py-2">
+                        <div class="card-body">
+                            <h1 id="updateWis" class="card-header trait-number">X</h1>
+                            <h6 class="card-text pt-2">Wisdom</h6>
+                        </div>
+                    </div>
+                    <div class="col card m-2 py-2">
+                        <div class="card-body">
+                            <h1 id="updateCha" class="card-header trait-number">X</h1>
+                            <h6 class="card-text pt-2">Charisma</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- VIRTUE BAR -->
+                <div class="row">
+                    <div class="col p-1 m-1">
+                        <h3 id="virtueInfo" class="subheader">Virtue</h3>
+                        <div id="virtueStatus">
+                            <div id="virtueBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SECTION 2 -->
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/script.js"></script>
+
+</body>
+</html>

@@ -2,6 +2,14 @@
 // const str = this.traits.str;
 const diceRoll = (n = 20) => Math.floor(Math.random() * n + 1);
 
+// DOM SHORTCUTS
+const updateStr = document.querySelector("#updateStr");
+const updateDex = document.querySelector("#updateDex");
+const updateCon = document.querySelector("#updateCon");
+const updateInt = document.querySelector("#updateInt");
+const updateWis = document.querySelector("#updateWis");
+const updateCha = document.querySelector("#updateCha");
+
 // CLASSES
 class PlayerCharacter {
     constructor(pcName, pcRace, pcClass, skills = [], pcLevel = 1, virtue = 0, gold = 3 * diceRoll(6), inventory = []) {
@@ -48,6 +56,7 @@ class PlayerCharacter {
         this.stats.atk    = atk;
         this.stats.dmg    = dmg;
     }
+
     buildTraits(str, dex, con, int, wis, cha) {
         this.traits.strength     = str;
         this.traits.dexterity    = dex;
@@ -56,6 +65,29 @@ class PlayerCharacter {
         this.traits.wisdom       = wis;
         this.traits.charisma     = cha;
     };
+
+    updateTraits() {
+        updateStr.innerHTML = syntax.traits.strength;
+        updateDex.innerHTML = syntax.traits.dexterity;
+        updateCon.innerHTML = syntax.traits.constitution;
+        updateInt.innerHTML = syntax.traits.intellect;
+        updateWis.innerHTML = syntax.traits.wisdom;
+        updateCha.innerHTML = syntax.traits.charisma;
+    };
+
+    updateVirtue() {
+        const virtueColor = "background-color:" + ((this.virtue >= 0) ? "green" : "red") + ";";
+        document.querySelector("#virtueInfo").innerHTML = `Current Virtue: ${this.virtue}`;
+        document.querySelector("#virtueBar").setAttribute("style", "width:" + (this.virtue * 10) + "%; " + virtueColor);
+    }
+
+    loadCharacter() {
+        document.querySelector("#characterName").innerHTML = this.pcName;
+        document.querySelector("#characterInfo").innerHTML = `${this.pcRace} ${this.pcClass}, Level ${this.pcLevel}`;
+        document.querySelector("#characterImg").setAttribute("src", "/img/syntax.jpg"); 
+        this.updateTraits();
+        this.updateVirtue();
+    }
 
     skillCheck(trait, skill, dn = 20) {
         const currentRoll = diceRoll(dn);
@@ -67,7 +99,7 @@ class PlayerCharacter {
         console.log(skillMod);
         console.log(currentRoll);
         console.log(this.traits[trait] + currentRoll + skillMod);
-    }
+    };
 
     combatCheck(ac, hp, atk, dmgHigh, dmgLow = 0) {
         const [x, d] = this.stats.dmg.split("d");
@@ -118,7 +150,7 @@ class PlayerCharacter {
             }
         }
             // Need to change code to roll damage on low player damage OR on missed attack
-    }
+    };
 }
 
 // PLAYER CHARACTER CREATION -- SYNTAX
@@ -138,8 +170,9 @@ syntax.abilities.tinkerer = function() {
     syntax.skillRoll += 1;
 };
 
+syntax.profilePic = "/img/syntax.jpg";
+
 // syntax.combatCheck(10,3,12,2,1);
 
-syntax.combatCheck(10, 3, 12, 2, 1);
-
-console.log(syntax);
+// EVENT HANDLERS
+document.addEventListener('DOMContentLoaded', (event) => syntax.loadCharacter());
